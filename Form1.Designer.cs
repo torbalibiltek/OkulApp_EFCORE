@@ -79,6 +79,7 @@
             btnSil.TabIndex = 3;
             btnSil.Text = "Sil";
             btnSil.UseVisualStyleBackColor = true;
+            btnSil.Click += btnSil_Click;
             // 
             // btnYeni
             // 

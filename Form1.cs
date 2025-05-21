@@ -65,5 +65,23 @@ namespace OkulApp
         {
             lbSiniflar.SelectedIndex = -1; //Liste kutusundaki seçili öðeyi kaldýr
         }
+
+        private void btnSil_Click(object sender, EventArgs e)
+        {
+            DbSinif secili = lbSiniflar.SelectedItem as DbSinif; //Seçili sýnýfý al
+        
+            if(secili!=null)
+            {
+                var cevap = MessageBox.Show(secili.SinifAdi + " adlý sýnýfý silmek istediðinze" +
+                    "emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(cevap == DialogResult.Yes)
+                {
+                    db.Siniflar.Remove(secili);
+                    db.SaveChanges();
+                    MessageBox.Show("Sýnýf silindi.");
+                }
+            }
+        }
     }
 }
