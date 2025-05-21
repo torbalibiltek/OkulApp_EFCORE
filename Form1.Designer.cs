@@ -34,6 +34,15 @@
             btnEkleGuncelle = new Button();
             btnSil = new Button();
             btnYeni = new Button();
+            dataGridView1 = new DataGridView();
+            btnOgrencileriGuncelle = new Button();
+            btnOgrenciSil = new Button();
+            ColNumara = new DataGridViewTextBoxColumn();
+            ColAd = new DataGridViewTextBoxColumn();
+            ColSoyad = new DataGridViewTextBoxColumn();
+            ColCinsiyet = new DataGridViewComboBoxColumn();
+            ColSinif = new DataGridViewComboBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // lbSiniflar
@@ -91,12 +100,74 @@
             btnYeni.UseVisualStyleBackColor = true;
             btnYeni.Click += btnYeni_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColNumara, ColAd, ColSoyad, ColCinsiyet, ColSinif });
+            dataGridView1.Location = new Point(178, 30);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(589, 289);
+            dataGridView1.TabIndex = 4;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btnOgrencileriGuncelle
+            // 
+            btnOgrencileriGuncelle.Location = new Point(567, 325);
+            btnOgrencileriGuncelle.Name = "btnOgrencileriGuncelle";
+            btnOgrencileriGuncelle.Size = new Size(75, 23);
+            btnOgrencileriGuncelle.TabIndex = 5;
+            btnOgrencileriGuncelle.Text = "Güncelle";
+            btnOgrencileriGuncelle.UseVisualStyleBackColor = true;
+            btnOgrencileriGuncelle.Click += button1_Click_1;
+            // 
+            // btnOgrenciSil
+            // 
+            btnOgrenciSil.Location = new Point(486, 325);
+            btnOgrenciSil.Name = "btnOgrenciSil";
+            btnOgrenciSil.Size = new Size(75, 23);
+            btnOgrenciSil.TabIndex = 6;
+            btnOgrenciSil.Text = "Sil";
+            btnOgrenciSil.UseVisualStyleBackColor = true;
+            // 
+            // ColNumara
+            // 
+            ColNumara.DataPropertyName = "Numara";
+            ColNumara.HeaderText = "Numara";
+            ColNumara.Name = "ColNumara";
+            // 
+            // ColAd
+            // 
+            ColAd.DataPropertyName = "Ad";
+            ColAd.HeaderText = "Ad";
+            ColAd.Name = "ColAd";
+            // 
+            // ColSoyad
+            // 
+            ColSoyad.DataPropertyName = "Soyad";
+            ColSoyad.HeaderText = "Soyad";
+            ColSoyad.Name = "ColSoyad";
+            // 
+            // ColCinsiyet
+            // 
+            ColCinsiyet.DataPropertyName = "Cinsiyet";
+            ColCinsiyet.HeaderText = "Cinsiyet";
+            ColCinsiyet.Name = "ColCinsiyet";
+            // 
+            // ColSinif
+            // 
+            ColSinif.DataPropertyName = "SinifId";
+            ColSinif.HeaderText = "Sınıf";
+            ColSinif.Name = "ColSinif";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(128, 128, 255);
-            ClientSize = new Size(669, 428);
+            ClientSize = new Size(882, 428);
+            Controls.Add(btnOgrenciSil);
+            Controls.Add(btnOgrencileriGuncelle);
+            Controls.Add(dataGridView1);
             Controls.Add(btnYeni);
             Controls.Add(btnSil);
             Controls.Add(btnEkleGuncelle);
@@ -106,6 +177,7 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +190,13 @@
         private Button btnEkleGuncelle;
         private Button btnSil;
         private Button btnYeni;
+        private DataGridView dataGridView1;
+        private Button btnOgrencileriGuncelle;
+        private Button btnOgrenciSil;
+        private DataGridViewTextBoxColumn ColNumara;
+        private DataGridViewTextBoxColumn ColAd;
+        private DataGridViewTextBoxColumn ColSoyad;
+        private DataGridViewComboBoxColumn ColCinsiyet;
+        private DataGridViewComboBoxColumn ColSinif;
     }
 }

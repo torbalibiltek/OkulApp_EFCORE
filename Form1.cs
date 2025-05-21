@@ -11,6 +11,15 @@ namespace OkulApp
         public Form1()
         {
             InitializeComponent();
+
+            ColCinsiyet.DataSource = new List<CinsiyetItem>{
+
+                new CinsiyetItem() { Cinsiyet = "Erkek" },
+                 new CinsiyetItem() { Cinsiyet = "Kadýn" }
+            };
+
+            ColCinsiyet.DisplayMember = "Cinsiyet"; //Combobox'ta gösterilecek alan
+            ColCinsiyet.ValueMember = "Id"; //Combobox'ta deðeri belirle
         }
 
         void VerileriYukle()
@@ -24,6 +33,12 @@ namespace OkulApp
             lbSiniflar.DisplayMember = "SinifAdi"; //Liste kutusundaki gösterilecek alaný belirle
             lbSiniflar.ValueMember = "Id"; //Liste kutusundaki deðeri belirle
             //local scope 
+
+            db.Ogrenciler.Load(); //Veritabanýndaki öðrencileri yükle
+            var ogrenciListe = db.Ogrenciler.Local.ToBindingList(); //Veritabanýndaki öðrencileri listele
+            dataGridView1.DataSource = ogrenciListe; //Listeyi veri gridine ata
+
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -69,19 +84,29 @@ namespace OkulApp
         private void btnSil_Click(object sender, EventArgs e)
         {
             DbSinif secili = lbSiniflar.SelectedItem as DbSinif; //Seçili sýnýfý al
-        
-            if(secili!=null)
-            {
-                var cevap = MessageBox.Show(secili.SinifAdi + " adlý sýnýfý silmek istediðinze" +
-                    "emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                if(cevap == DialogResult.Yes)
+            if (secili != null)
+            {
+                var cevap = MessageBox.Show($"{secili.SinifAdi} adlý sýnýfý silmek " +
+                    $"istediðinze emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (cevap == DialogResult.Yes)
                 {
                     db.Siniflar.Remove(secili);
                     db.SaveChanges();
                     MessageBox.Show("Sýnýf silindi.");
                 }
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
