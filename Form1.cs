@@ -12,7 +12,8 @@ namespace OkulApp
         {
             InitializeComponent();
 
-            ColCinsiyet.DataSource = new List<CinsiyetItem>{
+            ColCinsiyet.DataSource = new List<CinsiyetItem>
+            {
 
                 new CinsiyetItem() { Cinsiyet = "Erkek" },
                  new CinsiyetItem() { Cinsiyet = "Kadýn" }
@@ -33,11 +34,18 @@ namespace OkulApp
             lbSiniflar.DisplayMember = "SinifAdi"; //Liste kutusundaki gösterilecek alaný belirle
             lbSiniflar.ValueMember = "Id"; //Liste kutusundaki deðeri belirle
             //local scope 
-
+            
+            
+            
+            //Siniflar Comboboxý doldur
+            ColSinif.DataSource = liste; //Liste kutusundaki sýnýflarý ata
+            ColSinif.DisplayMember = "SinifAdi"; //Liste kutusundaki gösterilecek alaný belirle
+            ColSinif.ValueMember = "Id"; //Liste kutusundaki deðeri belirle
+            ///Öðrencileri yükle
+            dataGridView1.AutoGenerateColumns = false;
             db.Ogrenciler.Load(); //Veritabanýndaki öðrencileri yükle
             var ogrenciListe = db.Ogrenciler.Local.ToBindingList(); //Veritabanýndaki öðrencileri listele
             dataGridView1.DataSource = ogrenciListe; //Listeyi veri gridine ata
-
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -107,6 +115,11 @@ namespace OkulApp
         private void button1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel = true;
         }
     }
 }

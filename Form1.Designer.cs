@@ -35,13 +35,13 @@
             btnSil = new Button();
             btnYeni = new Button();
             dataGridView1 = new DataGridView();
-            btnOgrencileriGuncelle = new Button();
-            btnOgrenciSil = new Button();
             ColNumara = new DataGridViewTextBoxColumn();
             ColAd = new DataGridViewTextBoxColumn();
             ColSoyad = new DataGridViewTextBoxColumn();
             ColCinsiyet = new DataGridViewComboBoxColumn();
             ColSinif = new DataGridViewComboBoxColumn();
+            btnOgrencileriGuncelle = new Button();
+            btnOgrenciSil = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -109,25 +109,7 @@
             dataGridView1.Size = new Size(589, 289);
             dataGridView1.TabIndex = 4;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // btnOgrencileriGuncelle
-            // 
-            btnOgrencileriGuncelle.Location = new Point(567, 325);
-            btnOgrencileriGuncelle.Name = "btnOgrencileriGuncelle";
-            btnOgrencileriGuncelle.Size = new Size(75, 23);
-            btnOgrencileriGuncelle.TabIndex = 5;
-            btnOgrencileriGuncelle.Text = "Güncelle";
-            btnOgrencileriGuncelle.UseVisualStyleBackColor = true;
-            btnOgrencileriGuncelle.Click += button1_Click_1;
-            // 
-            // btnOgrenciSil
-            // 
-            btnOgrenciSil.Location = new Point(486, 325);
-            btnOgrenciSil.Name = "btnOgrenciSil";
-            btnOgrenciSil.Size = new Size(75, 23);
-            btnOgrenciSil.TabIndex = 6;
-            btnOgrenciSil.Text = "Sil";
-            btnOgrenciSil.UseVisualStyleBackColor = true;
+            dataGridView1.DataError += dataGridView1_DataError;
             // 
             // ColNumara
             // 
@@ -158,6 +140,25 @@
             ColSinif.DataPropertyName = "SinifId";
             ColSinif.HeaderText = "Sınıf";
             ColSinif.Name = "ColSinif";
+            // 
+            // btnOgrencileriGuncelle
+            // 
+            btnOgrencileriGuncelle.Location = new Point(567, 325);
+            btnOgrencileriGuncelle.Name = "btnOgrencileriGuncelle";
+            btnOgrencileriGuncelle.Size = new Size(75, 23);
+            btnOgrencileriGuncelle.TabIndex = 5;
+            btnOgrencileriGuncelle.Text = "Güncelle";
+            btnOgrencileriGuncelle.UseVisualStyleBackColor = true;
+            btnOgrencileriGuncelle.Click += button1_Click_1;
+            // 
+            // btnOgrenciSil
+            // 
+            btnOgrenciSil.Location = new Point(486, 325);
+            btnOgrenciSil.Name = "btnOgrenciSil";
+            btnOgrenciSil.Size = new Size(75, 23);
+            btnOgrenciSil.TabIndex = 6;
+            btnOgrenciSil.Text = "Sil";
+            btnOgrenciSil.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
