@@ -33,15 +33,15 @@ namespace OkulApp
             lbSiniflar.DataSource = liste; //Listeyi liste kutusuna ata
             lbSiniflar.DisplayMember = "SinifAdi"; //Liste kutusundaki gösterilecek alaný belirle
             lbSiniflar.ValueMember = "Id"; //Liste kutusundaki deðeri belirle
-            //local scope 
-            
-            
-            
+                                           //local scope 
+
+
             //Siniflar Comboboxý doldur
             ColSinif.DataSource = liste; //Liste kutusundaki sýnýflarý ata
             ColSinif.DisplayMember = "SinifAdi"; //Liste kutusundaki gösterilecek alaný belirle
             ColSinif.ValueMember = "Id"; //Liste kutusundaki deðeri belirle
-            ///Öðrencileri yükle
+
+            //Öðrencileri yükle
             dataGridView1.AutoGenerateColumns = false;
             db.Ogrenciler.Load(); //Veritabanýndaki öðrencileri yükle
             var ogrenciListe = db.Ogrenciler.Local.ToBindingList(); //Veritabanýndaki öðrencileri listele
@@ -120,6 +120,33 @@ namespace OkulApp
         private void dataGridView1_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             e.Cancel = true;
+        }
+
+        private void btnOgrencileriGuncelle_Click(object sender, EventArgs e)
+        {
+            db.SaveChanges();
+        }
+
+        private void btnOgrenciSil_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+                return;
+            int seciliIndex = dataGridView1.CurrentRow.Index;
+
+            if (seciliIndex < 0)
+                return;
+
+            DbOgrenci ogr = dataGridView1.Rows[seciliIndex].DataBoundItem as DbOgrenci;
+
+            var cevap = MessageBox.Show($"{ogr.Numara} {ogr.Ad} {ogr.Soyad} adlý öðrenciyi silmek " +
+                    $"istediðinze emin misiniz?", "Dikkat", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (cevap == DialogResult.Yes)
+            {
+                db.Ogrenciler.Remove(ogr);
+                db.SaveChanges();
+                MessageBox.Show("Öðrenci silindi.");
+            }
         }
     }
 }

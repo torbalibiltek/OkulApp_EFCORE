@@ -149,7 +149,7 @@
             btnOgrencileriGuncelle.TabIndex = 5;
             btnOgrencileriGuncelle.Text = "Güncelle";
             btnOgrencileriGuncelle.UseVisualStyleBackColor = true;
-            btnOgrencileriGuncelle.Click += button1_Click_1;
+            btnOgrencileriGuncelle.Click += btnOgrencileriGuncelle_Click;
             // 
             // btnOgrenciSil
             // 
